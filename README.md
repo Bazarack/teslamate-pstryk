@@ -1,6 +1,3 @@
-
-
-
 # PstrykMate
 
 PstrykMate to skrypt który automatycznie przypisuje koszt ładowania w bazie danych TeslaMate, korzystając z dynamicznych cen energii elektrycznej dostarczanych przez API Pstryk. Nasłuchuje zakończenia sesji ładowania za pomocą MQTT i oblicza koszt na podstawie godzinowego zużycia energii.
@@ -16,7 +13,7 @@ PstrykMate to skrypt który automatycznie przypisuje koszt ładowania w bazie da
 
 ## Czego nie ma
 
-- ❌ Na ten moment obsługiwany jest tylko jeden samochód 
+- ❌ Na ten moment obsługiwany jest tylko jeden samochód
 
 
 ---
@@ -103,13 +100,13 @@ Teraz Twój serwis `PstrykMate` będzie mógł połączyć się z `mosquitto` i 
 
 ---
 
-## Jak uruchomić
+## Instalacja i uruchomienie
 
 ### 📁 1. Sklonuj repozytorium PstrykMate
 
 ```bash
-git clone https://github.com/<twoje-repo>/pstrykmate.git
-cd pstrykmate
+git clone https://github.com/Bazarack/teslamate-pstryk.git
+cd teslamate-pstryk
 ```
 
 ---
@@ -126,9 +123,11 @@ Wklej zawartość (zmień dane według swojej konfiguracji):
 
 ```env
 PSTRYK_API_KEY=<TWÓJ_PSTRYK_API_TOKEN>
-DATABASE_URL=postgresql://teslamate:password@host.docker.internal:5432/teslamate
+DATABASE_URL=postgresql://username:password@database_host/database_name
 HOME_GEOFENCE_ID=1
 ```
+Pstryk API Key znajdziesz w aplikacji Pstryk w sekcji `Konto -> Klucz API`
+Dane do `DATABASE_URL`trzeba uzupełnić na podstawie tego, co zostało uzupełnione w `docker-compose.yaml`  aplikacji TeslaMate. Należy pamiętać, że jeśli np: hasło zawiera znaki specjalne to muszą one zostać przepuszczone przez `urlencode`
 
 Zapisz (`CTRL+O`, Enter, potem `CTRL+X`).
 
@@ -191,13 +190,15 @@ app/logger.log
 
 MIT License.
 
---- 
+---
 
 
 ## ❤️ Podoba się projekt?
+
+☕ Projekt udostępniam wszystkim chętnym za darmo i bardzo mnie będzie cieszyć jeśli komuś się przyda. Jeśli byś jednak chciał/chciała [postawić mi kawkę](https://buycoffee.to/bazarack) to będzie mi niezmiernie miło :)
 
 ⚡ Nie jesteś jeszcze w Pstryk? Odbierz 50 zł na prąd! Użyj mojego kodu **GPMLY1** w koszyku w aplikacji. Bonus trafi do Twojego Portfela Pstryk po pierwszej opłaconej fakturze!
 
 🚗 Dopiero planujesz zakup Tesli? Skorzystaj z mojego linka polecającego: [https://ts.la/ukasz425098](https://ts.la/ukasz425098) i odbierz doładowanie na 1000km!
 
---- 
+---
