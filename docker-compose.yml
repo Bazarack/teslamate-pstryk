@@ -1,0 +1,22 @@
+services:
+  pstryk-mate:
+    build: .
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "main.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app
+    restart: unless-stopped
+    networks:
+      - teslamate_default
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+networks:
+  teslamate_default:
+    external: true
